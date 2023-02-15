@@ -1,0 +1,13 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+      addresses:
+        - 10.0.5.12/24
+      nameservers:
+        search: [adam.local]
+        addresses: [10.0.5.5]
+      routes:
+        - to: default
+          via: 10.0.5.2
