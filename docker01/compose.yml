@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  apache:
+    image: httpd:latest
+    container_name: adam-apache 
+    ports:
+      - 80:80
+    volumes:
+      - "~/website:/usr/local/apache2/htdocs"
+    depends_on:
+      - ngrok
+
+  ngrok:
+    image: ngrok/ngrok:alpine
+    environment:
+      - NGROK_AUTHTOKEN= "put your token here"
+    ports:
+      - 4040:4040
+    command: 'http 80'
+    network_mode: "host"
