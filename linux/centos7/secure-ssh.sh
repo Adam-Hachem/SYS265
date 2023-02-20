@@ -3,4 +3,9 @@
 #Creates a new ssh user using $1 parameter
 #Adds a public key from the local repo or curled from the remote repo
 #Removes root's ability to ssh in
-echo "All YOUR CODE GOES HERE"
+sudo useradd -m -d /home/$1 -s /bin/bash $1
+sudo mkdir /home/sys265/.ssh
+sudo cp SYS265/linux/public-keys/id_rsa.pub / home/$1/.ssh/authozized_keys
+sudo chmod 700 /home/$1/.ssh
+sudo chmod 600 /home/$1/.ssh/authorized_keys
+sudo chown -R $1:$1 /home/$1/.ssh
